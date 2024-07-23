@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/theme/theme.dart';
+// import 'features/authentication/presentation/pages/register_page.dart';
 import 'features/authentication/presentation/pages/login_page.dart';
 
 void main() {

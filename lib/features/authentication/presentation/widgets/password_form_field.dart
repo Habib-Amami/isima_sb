@@ -43,7 +43,7 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
                 : const Icon(Icons.visibility_off_outlined),
           ),
           hintText: "Enter Your Password Here",
-          helperText: "Your password most be at least 6 characters",
+          helperText: "Your password must be at least 6 characters",
         ),
         validator: (password) {
           switch (password) {
