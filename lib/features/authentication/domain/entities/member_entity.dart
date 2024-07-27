@@ -6,6 +6,7 @@ part 'member_entity.freezed.dart';
 @freezed
 class MemberEntity with _$MemberEntity {
   const factory MemberEntity({
+    required String id,
     required String photoURL,
     required String username,
     required String studyLevel,

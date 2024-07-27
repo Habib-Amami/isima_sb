@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MemberEntity {
+  String get id => throw _privateConstructorUsedError;
   String get photoURL => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get studyLevel => throw _privateConstructorUsedError;
@@ -37,7 +38,8 @@ abstract class $MemberEntityCopyWith<$Res> {
       _$MemberEntityCopyWithImpl<$Res, MemberEntity>;
   @useResult
   $Res call(
-      {String photoURL,
+      {String id,
+      String photoURL,
       String username,
       String studyLevel,
       int phoneNumber,
@@ -59,6 +61,7 @@ class _$MemberEntityCopyWithImpl<$Res, $Val extends MemberEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? photoURL = null,
     Object? username = null,
     Object? studyLevel = null,
@@ -68,6 +71,10 @@ class _$MemberEntityCopyWithImpl<$Res, $Val extends MemberEntity>
     Object? role = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       photoURL: null == photoURL
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
@@ -109,7 +116,8 @@ abstract class _$$MemberEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String photoURL,
+      {String id,
+      String photoURL,
       String username,
       String studyLevel,
       int phoneNumber,
@@ -129,6 +137,7 @@ class __$$MemberEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? photoURL = null,
     Object? username = null,
     Object? studyLevel = null,
@@ -138,6 +147,10 @@ class __$$MemberEntityImplCopyWithImpl<$Res>
     Object? role = null,
   }) {
     return _then(_$MemberEntityImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       photoURL: null == photoURL
           ? _value.photoURL
           : photoURL // ignore: cast_nullable_to_non_nullable
@@ -174,7 +187,8 @@ class __$$MemberEntityImplCopyWithImpl<$Res>
 
 class _$MemberEntityImpl with DiagnosticableTreeMixin implements _MemberEntity {
   const _$MemberEntityImpl(
-      {required this.photoURL,
+      {required this.id,
+      required this.photoURL,
       required this.username,
       required this.studyLevel,
       required this.phoneNumber,
@@ -182,6 +196,8 @@ class _$MemberEntityImpl with DiagnosticableTreeMixin implements _MemberEntity {
       required this.FCMtoken,
       required this.role});
 
+  @override
+  final String id;
   @override
   final String photoURL;
   @override
@@ -200,7 +216,7 @@ class _$MemberEntityImpl with DiagnosticableTreeMixin implements _MemberEntity {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MemberEntity(photoURL: $photoURL, username: $username, studyLevel: $studyLevel, phoneNumber: $phoneNumber, email: $email, FCMtoken: $FCMtoken, role: $role)';
+    return 'MemberEntity(id: $id, photoURL: $photoURL, username: $username, studyLevel: $studyLevel, phoneNumber: $phoneNumber, email: $email, FCMtoken: $FCMtoken, role: $role)';
   }
 
   @override
@@ -208,6 +224,7 @@ class _$MemberEntityImpl with DiagnosticableTreeMixin implements _MemberEntity {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'MemberEntity'))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('photoURL', photoURL))
       ..add(DiagnosticsProperty('username', username))
       ..add(DiagnosticsProperty('studyLevel', studyLevel))
@@ -222,6 +239,7 @@ class _$MemberEntityImpl with DiagnosticableTreeMixin implements _MemberEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MemberEntityImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.photoURL, photoURL) ||
                 other.photoURL == photoURL) &&
             (identical(other.username, username) ||
@@ -237,8 +255,8 @@ class _$MemberEntityImpl with DiagnosticableTreeMixin implements _MemberEntity {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, photoURL, username, studyLevel,
-      phoneNumber, email, FCMtoken, role);
+  int get hashCode => Object.hash(runtimeType, id, photoURL, username,
+      studyLevel, phoneNumber, email, FCMtoken, role);
 
   @JsonKey(ignore: true)
   @override
@@ -249,7 +267,8 @@ class _$MemberEntityImpl with DiagnosticableTreeMixin implements _MemberEntity {
 
 abstract class _MemberEntity implements MemberEntity {
   const factory _MemberEntity(
-      {required final String photoURL,
+      {required final String id,
+      required final String photoURL,
       required final String username,
       required final String studyLevel,
       required final int phoneNumber,
@@ -257,6 +276,8 @@ abstract class _MemberEntity implements MemberEntity {
       required final String FCMtoken,
       required final String role}) = _$MemberEntityImpl;
 
+  @override
+  String get id;
   @override
   String get photoURL;
   @override
