@@ -9,7 +9,7 @@ void main() {
 
   setUp(
     () {
-      member1 = const MemberEntity(
+      member1 = MemberEntity(
         id: '1',
         photoURL: 'http://example.com/photo1.jpg',
         username: 'user1',
@@ -19,7 +19,7 @@ void main() {
         FCMtoken: 'token1',
         role: 'member',
       );
-      member2 = const MemberEntity(
+      member2 = MemberEntity(
         id: '1',
         photoURL: 'http://example.com/photo1.jpg',
         username: 'user1',
@@ -29,7 +29,7 @@ void main() {
         FCMtoken: 'token1',
         role: 'member',
       );
-      member3 = const MemberEntity(
+      member3 = MemberEntity(
         id: '2',
         photoURL: 'http://example.com/photo2.jpg',
         username: 'user2',
