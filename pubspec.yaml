@@ -43,6 +43,11 @@ dependencies:
   json_annotation: ^4.9.0
   #routing package
   go_router: ^14.2.1
+  #image picking and cropping
+  image_picker: ^1.1.2
+  image_cropper: ^7.1.0
+  #handeling permissions
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   # needed for the code generation
