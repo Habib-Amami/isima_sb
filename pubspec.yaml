@@ -41,6 +41,8 @@ dependencies:
   fpdart: ^1.1.0
   ##annotation for toJosn and fromJson generation
   json_annotation: ^4.9.0
+  #routing package
+  go_router: ^14.2.1
 
 dev_dependencies:
   # needed for the code generation

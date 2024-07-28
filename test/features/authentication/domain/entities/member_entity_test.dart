@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:isima_sb/features/authentication/domain/entities/member_entity.dart';
+import 'package:isima_sb/src/features/authentication/domain/entities/member_entity.dart';
 
 void main() {
   late MemberEntity member1;

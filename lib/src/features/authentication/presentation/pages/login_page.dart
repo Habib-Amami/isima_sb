@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/repositories/authentication_repository_impl.dart';
+import '../../domain/usecases/login_user.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/auth_redirect_row.dart';
 import '../widgets/auth_title.dart';
@@ -11,7 +14,12 @@ import '../widgets/sb_arc.dart';
 import '../widgets/waves.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final VoidCallback toggleAccount;
+
+  const LoginPage({
+    super.key,
+    required this.toggleAccount,
+  });
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -26,6 +34,10 @@ class _LoginPageState extends State<LoginPage> {
 
   // Variables to manage the visibility of the password
   final bool _isObscure = true;
+
+  //
+  String email = "";
+  String passsword = "";
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +59,23 @@ class _LoginPageState extends State<LoginPage> {
                     const AuthTitle(
                       title: "Email Address",
                     ),
-                    const EmailFormField(),
+                    EmailFormField(
+                      onSaved: (newEmail) {
+                        if (null != newEmail) {
+                          email = newEmail.trim();
+                        }
+                      },
+                    ),
                     const AuthTitle(
                       title: "Password",
                     ),
                     PasswordFormField(
                       isObscure: _isObscure,
+                      onSaved: (newPassword) {
+                        if (null != newPassword) {
+                          passsword = newPassword.trim();
+                        }
+                      },
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,14 +96,28 @@ class _LoginPageState extends State<LoginPage> {
                     AuthButton(
                       label: "Log in",
                       icon: const Icon(Icons.login),
-                      onPressed: () {
-                        if (_formkey.currentState!.validate()) {}
+                      onPressed: () async {
+                        FirebaseFirestore.instance
+                            .collection('movies')
+                            .doc()
+                            .set({"email": email});
+                        if (_formkey.currentState!.validate()) {
+                          _formkey.currentState!.save();
+                          debugPrint(email);
+                          debugPrint(passsword);
+
+                          LoginUser(repository: AuthenticationRepositoryImpl())
+                              .call(
+                            email: email,
+                            password: passsword,
+                          );
+                        }
                       },
                     ),
                     AuthRedirectionRow(
                       redirectionLabel: "Don't have an account ?",
                       redirectionButtonLabel: "Register",
-                      redirectionButtonOnPressed: () {},
+                      redirectionButtonOnPressed: widget.toggleAccount,
                     ),
                   ],
                 ),

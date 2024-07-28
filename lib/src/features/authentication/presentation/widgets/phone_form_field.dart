@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class PhoneFormField extends StatelessWidget {
-  const PhoneFormField({super.key});
+  final void Function(String? newPhoneNumber) onSaved;
+
+  const PhoneFormField({
+    super.key,
+    required this.onSaved,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +35,7 @@ class PhoneFormField extends StatelessWidget {
           }
           return null;
         },
+        onSaved: onSaved,
       ),
     );
   }

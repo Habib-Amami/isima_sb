@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class PasswordFormField extends StatefulWidget {
   bool isObscure;
+  final void Function(String? newPassword) onSaved;
 
   PasswordFormField({
     super.key,
     required this.isObscure,
+    required this.onSaved,
   });
 
   @override
@@ -57,6 +59,7 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
               return null;
           }
         },
+        onSaved: widget.onSaved,
       ),
     );
   }

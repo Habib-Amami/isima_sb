@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class UsernameFormField extends StatelessWidget {
-  const UsernameFormField({super.key});
+  final void Function(String? newUsername) onSaved;
+
+  const UsernameFormField({
+    super.key,
+    required this.onSaved,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +39,7 @@ class UsernameFormField extends StatelessWidget {
               return null;
           }
         },
+        onSaved: onSaved,
       ),
     );
   }

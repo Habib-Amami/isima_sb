@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class EmailFormField extends StatelessWidget {
-  const EmailFormField({super.key});
+  final void Function(String? newEmail) onSaved;
+  const EmailFormField({
+    super.key,
+    required this.onSaved,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +52,7 @@ class EmailFormField extends StatelessWidget {
               return null;
           }
         },
+        onSaved: onSaved,
       ),
     );
   }
