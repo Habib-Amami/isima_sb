@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
+import '../../../../core/utils/image_picker.dart';
 
 import '../widgets/auth_button.dart';
 import '../widgets/auth_redirect_row.dart';
@@ -32,6 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final bool _isObscure = true;
 
   //
+  CroppedFile? profileImage;
   String username = "";
   String phoneNumber = "";
   String email = "";
@@ -84,12 +88,24 @@ class _RegisterPageState extends State<RegisterPage> {
                               icon: const Icon(
                                 Icons.add_photo_alternate_outlined,
                               ),
-                              onPressed: () {},
+                              onPressed: () async {
+                                await ImagesPicker.pickImageFromSource(
+                                  imagefile: profileImage,
+                                  imageSource: ImageSource.gallery,
+                                  imageQuality: 0,
+                                );
+                              },
                             ),
                             ImagePickerButton(
                               label: "Camera",
                               icon: const Icon(Icons.add_a_photo_outlined),
-                              onPressed: () {},
+                              onPressed: () async {
+                                await ImagesPicker.pickImageFromSource(
+                                  imagefile: profileImage,
+                                  imageSource: ImageSource.camera,
+                                  imageQuality: 0,
+                                );
+                              },
                             ),
                           ],
                         ),
